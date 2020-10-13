@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crear Perfil</title>
+</head>
+<body>
+	<h1>Creando Perfil</h1>
+	<h2>
+		los campos  requeridos  deben ser Nombres, Usuario, Clave y Correo
+	</h2>
+	<form action="" method="POST">
+		{% csrf_token %}
+		{{form.as_p}}	
+		<input type="submit" value="Guardar Informacion">
+	</form>
+</body>
+</html>

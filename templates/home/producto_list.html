@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	{% for i in object_list|dictsort:"id" reversed %}
+		<p>{{i.id}}</p>
+		<p>{{i}}</p>
+	{% endfor %}
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block titulo %}
+	About
+{% endblock %}
+
+{% block contenido %}
+	
+	<h1>{{request.user.username}}</h1>
+	<h6>Respuesta</h6>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>producto</th>
+				<th>editar</th>
+				<th>eliminar</th>
+			</tr>
+		</thead>
+		<tbody id="datos">
+			{% for i in respuesta %}
+				<tr>
+					<td>{{i.0}}</td>
+					<td>{{i.1}}</td>
+					<td> <a href="{% url 'vista_eliminar_producto' url=i.1 %}">eliminar</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<!--form action="">
+		<input name="nombre" type="text">
+		<input type="submit" value="enviar">
+	</form-->
+	
+
+{% endblock %}

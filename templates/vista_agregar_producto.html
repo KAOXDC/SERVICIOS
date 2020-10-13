@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<nav class="orange">
+		<ul>
+			<li><a href="">Inicio</a></li>
+			<li><a href="{% url 'vista_about' %}">about</a></li>
+			<li><a href="{% url 'vista_lista_producto' %}">Lista de productos</a></li>
+			<li><a href="{% url 'vista_contacto' %}">contacto</a></li>
+			{% if user.is_authenticated %}
+				<li><a href="{% url 'vista_logout' %}">logout</a></li>
+			{% else %}
+				<li><a href="{% url 'vista_login' %}">login</a></li>
+			{% endif %}
+		</ul>
+	</nav>
+
+	<form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		
+		<p>
+			<label for="nombre">Nombre</label>
+			<input type="text" id="nombre" name="nombre" value="enter your name">
+		</p>
+		<p>
+			<label for="descripcion">Descripcion</label>
+			<textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+		</p>
+		<p>
+			<label for="status">Status</label>
+			<input id="status" type="checkbox" checked="" name="status">
+		</p>
+		<p>
+			<label for="precio">Precio</label>
+			<input id="precio" type="number" name="precio">
+		</p>
+		<p>
+			<label for="stock">Stock</label>
+			<input id="stock" type="number" name="stock">
+		</p>
+		<p>
+			<label for="marca">Marca</label>
+			<select name="marca" id="marca" name="marca">
+				<option value="" selected="">Selecciona una marca</option>
+				{% for m in lis_marcas %}					
+					<option value="{{m.2}}">{{m.1}}</option>
+				{% endfor %}
+			</select>
+		</p>
+		<p>
+			<label for="categoria">Categoria</label>
+			<select multiple="" name="categoria" id="categoria" name="categoria">
+				<option value="" selected="">Selecciona una categoria</option>
+				{% for c in lis_ctegrs %}
+					<option value="{{c.2}}">{{c.1}}</option>
+				{% endfor %}
+			</select>
+		</p>
+
+		<input type="submit" value="Agregar Producto">
+	</form>
+</body>
+</html>
+

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block titulo %}
+	Login
+{% endblock %}
+
+{% block contenido %}
+	<h2>{{ msj }}</h2>
+	<form action="" method="POST">
+		{% csrf_token %}
+		{{ formulario.as_p }}
+		<input class="waves-effect waves-light lime btn" type="submit" value="Login">
+	</form>
+
+	<a class="waves-effect waves-light btn" href="{% url 'vista_register' %}">Registrate</a>
+{% endblock %}
